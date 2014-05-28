@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "CharsProcessor.h"
+#include "KeyWordsConfig.h"
 
 CharsProcessor::CharsProcessor(void)
 {
@@ -32,12 +33,14 @@ bool CharsProcessor::lexerChars(char*& input, char comparedCh)
 
 int	CharsProcessor::removeSpace(char*& input)
 {
-	return CharsProcessor::lexerChars(input, bind(CharsJudgment::isSpace, _1));
+	 return CharsProcessor::lexerChars(input, bind(CharsJudgment::isSpace, _1));
 }
 
-int	CharsProcessor::lexerKeyWord(char*& input)
+int	CharsProcessor::lexerKeyWordOrVar(char*& input)
 {
-	return CharsProcessor::lexerChars(input, bind(CharsJudgment::isLetter, _1));
+	int counts = CharsProcessor::lexerChars(input
+		, bind(CharsJudgment::isNotWordsSeparator, _1));
+	return counts;
 }
 
 int	CharsProcessor::lexerOperator(char*& input)
@@ -45,26 +48,27 @@ int	CharsProcessor::lexerOperator(char*& input)
 	return CharsProcessor::lexerChars(input, bind(CharsJudgment::isOpreator, _1));
 }
 
-int	CharsProcessor::lexerVariable(char*& input)
-{
-	int count(0);
-	return count;
-}
-
 int	CharsProcessor::lexerString(char*& input)
 {
 	int count(0);
 	if (lexerChars(input, '\"')){
 		count += lexerChars(input,  bind(CharsJudgment::notDQM, _1));
-		if (!lexerChars(input, '\"'))return 0;
+		if (!lexerChars(input, '\"')){
+			input = input - count;
+			count = 0;
+		};
 	}
 	return count;
 }
 
-int	CharsProcessor::lexerNumber(char*& input)
+bool CharsProcessor::isNumber(const char* input)
 {
-	int count(0);
-	return count;
+	while(*input != '\0'){	
+		if (!CharsJudgment::isDigit(*input))
+			return false;
+		++input;
+	}
+	return true;
 }
 
 int	CharsProcessor::lexerReal(char*& input)
@@ -83,8 +87,12 @@ int	CharsProcessor::lexerComment(char*& input)
 {
 	int count(0);
 	if (lexerChars(input, '/')){
+		count++;
 		count += lexerChars(input,  bind(CharsJudgment::notEndComment, _1));
-		if (!lexerChars(input, '/'))return 0;
+		if (!lexerChars(input, '/')){
+			input = input - count;
+			count = 0;
+		};
 	}
 	return count;
 }

@@ -9,7 +9,7 @@ class KeyWordsConfig : public ISingleton<KeyWordsConfig>
 public:
 	~KeyWordsConfig(void);
 
-	bool	contains(const string& keyword);
+	bool	isKeyWords(const string& keyword);
 private:
 	void	init();
 

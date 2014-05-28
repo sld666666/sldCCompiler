@@ -11,6 +11,9 @@ public:
 	static bool isLetter(char Input);
 	static bool	isSpace(char input);
 	static bool isOpreator(char input);
+	static bool isPunctuation(char input);
 	static bool notDQM(char input);
 	static bool notEndComment(char input);
+	static bool isNotWordsSeparator(char input);
+	static bool isWordsSeparator(char input);
 };

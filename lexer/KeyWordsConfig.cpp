@@ -12,7 +12,7 @@ KeyWordsConfig::~KeyWordsConfig(void)
 {
 }
 
-bool KeyWordsConfig::contains(const string& keyword)
+bool KeyWordsConfig::isKeyWords(const string& keyword)
 {
 	if (keyWords_.empty()) init();
 	return (keyWords_.end() != std::find(keyWords_.begin(), keyWords_.end(), keyword));

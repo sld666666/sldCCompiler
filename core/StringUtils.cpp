@@ -28,12 +28,19 @@ vector<wstring> StringUtils::splitLast(const wstring& wstr, const wstring& stuff
 vector<string> StringUtils::splitLast(const string& str, const string& stuff)
 {
 	vector<string> strList;
-	int pos = str.rfind(stuff);
-	if (-1 != pos){
-		strList.push_back(str.substr(0,pos));
-		strList.push_back(str.substr(pos+1, str.length()));
 
+	string tmp = str;
+	int pos = tmp.rfind(stuff);
+	while (-1 != pos)
+	{
+		string value = tmp.substr(pos+1, str.length());
+		if (!value.empty())strList.push_back(value);
+
+		tmp = str.substr(0,pos);
+		pos = tmp.rfind(stuff);	
 	}
-	strList.push_back(str);
+
+	if(!tmp.empty())strList.push_back(tmp);
+
 	return strList;
 }

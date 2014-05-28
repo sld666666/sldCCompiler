@@ -20,7 +20,6 @@ void ComplierProcess::doComplile()
 	char* datas = fileReader->read();
 
 	//2. lexer
-
 	shared_ptr<ILexer> lexer(new LexExecutor());
 	vector<TokenPtr> lexUnits = lexer->excute(datas);
 

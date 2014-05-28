@@ -13,12 +13,12 @@ public:
 	static int	lexerChars(char*& input, LexFp lexFp);
 	static bool lexerChars(char*& input, char comparedCh);
 	static int	removeSpace(char*& input);
-	static int	lexerKeyWord(char*& input);
+	static int	lexerKeyWordOrVar(char*& input);
 	static int	lexerOperator(char*& input);
-	static int	lexerVariable(char*& input);
 	static int	lexerString(char*& input);
-	static int	lexerNumber(char*& input);
 	static int	lexerReal(char*& input);
 	static int	lexerDelimiter(char*& input);
 	static int	lexerComment(char*& input);
+
+	static bool	isNumber(const char* input);
 };

@@ -29,16 +29,36 @@ bool CharsJudgment::isLetter(char input)
 bool CharsJudgment::isSpace(char input)
 {
 	return (' ' == input
-			||'\t' == input);
+			||'\t' == input
+			|| CharsJudgment::isEnter(input)
+			|| 13 == input);
 }
 
 bool CharsJudgment::isOpreator(char input)
 {
 	return ('=' == input 
-		|| '{' == input 
-		|| '}' == input 
-		|| '{' == input 
-		|| '}' == input);
+		|| '>' == input 
+		|| '<' == input 
+		|| '+' == input 
+		|| '-' == input
+		|| '*' == input
+		|| '/' == input
+		|| '%' == input
+		|| '!' == input
+		|| '&' == input);
+}
+
+bool CharsJudgment::isPunctuation(char input)
+{
+	return ('[' == input 
+		|| ']' == input 
+		|| '(' == input 
+		|| ')' == input 
+		|| '{' == input
+		|| '}' == input
+		|| ',' == input
+		|| ';' == input
+		|| '#' == input);
 }
 
 bool CharsJudgment::notDQM(char input)
@@ -49,4 +69,16 @@ bool CharsJudgment::notDQM(char input)
 bool CharsJudgment::notEndComment(char input)
 {
 	return (input !='/');
+}
+
+bool CharsJudgment::isNotWordsSeparator(char input)
+{
+	return !isWordsSeparator(input);
+}
+
+bool CharsJudgment::isWordsSeparator(char input)
+{
+	return (CharsJudgment::isSpace(input)
+		|| CharsJudgment::isOpreator(input)
+		|| CharsJudgment::isPunctuation(input));
 }

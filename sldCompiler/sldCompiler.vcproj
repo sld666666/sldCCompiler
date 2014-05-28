@@ -253,6 +253,14 @@
 			Name="testor"
 			>
 			<File
+				RelativePath="..\testor\CharsProcessor_Testor.h"
+				>
+			</File>
+			<File
+				RelativePath="..\testor\KeyWordsConfig_Testor.h"
+				>
+			</File>
+			<File
 				RelativePath="..\testor\MappingFileReader_Testor.h"
 				>
 			</File>
