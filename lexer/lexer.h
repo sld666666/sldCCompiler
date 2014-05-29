@@ -4,15 +4,15 @@
 enum LEXER_TOKEN_TYPE{
 	LTT_FLAG	= 0,
 	LTT_KEYWORD = 1,//关键字
-	LTT_OPERATOR	,//运算符
-	LTT_CONSTANT	,//常量
-	LTT_VARIATE		,//变量
-	LTT_IDENTIFIER	,//标识符
-	LTT_STRING		,//字符串
+	LTT_OPERATOR = 2	,//运算符
+	LTT_CONSTANT = 3	,//常量
+	LTT_VARIATE	= 4	,//变量
+	LTT_IDENTIFIER = 5	,//标识符
+	LTT_STRING	= 6	,//字符串
 	//LTT_NUMBER		,
 	//LTT_Real		,
-	LTT_DELIMITER	,
-	LTT_COMMENT//注释
+	LTT_DELIMITER = 7	,
+	LTT_COMMENT = 8//注释
 };
 
 struct Token{

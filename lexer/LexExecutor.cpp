@@ -26,6 +26,8 @@ vector<TokenPtr> LexExecutor::excute(char* soruce)
 			lexUnits.push_back(makeToken(soruce, LTT_STRING, count, line));
 		}else if ( count=CharsProcessor::lexerOperator(soruce)){
 			lexUnits.push_back(makeToken(soruce, LTT_OPERATOR, count, line));
+		}else if(count=CharsProcessor::lexerIdentifier(soruce)){
+			lexUnits.push_back(makeToken(soruce, LTT_IDENTIFIER, count, line));
 		} else {
 			if (count=CharsProcessor::lexerKeyWordOrVar(soruce)){
 				string token = string(soruce-count, count);
@@ -37,10 +39,10 @@ vector<TokenPtr> LexExecutor::excute(char* soruce)
 					lexUnits.push_back(makeToken(soruce, LTT_VARIATE, count, line));
 				}
 			
+			}else{
+				++soruce;
 			}
 		}
-
-		++soruce;
 	}
 	return lexUnits;
 }

@@ -21,6 +21,17 @@ int CharsProcessor::lexerChars(char*& input
 	return count;
 }
 
+int	CharsProcessor::lexerOneChar(char*& input
+								 , LexFp lexFp)
+{
+	int count(0);
+	if(lexFp(*input)){
+		++count;
+		++input;
+	}
+	return count;
+}
+
 bool CharsProcessor::lexerChars(char*& input, char comparedCh)
 {
 	bool rtn(false);
@@ -48,15 +59,23 @@ int	CharsProcessor::lexerOperator(char*& input)
 	return CharsProcessor::lexerChars(input, bind(CharsJudgment::isOpreator, _1));
 }
 
+int	CharsProcessor::lexerIdentifier(char*& input)
+{
+	return CharsProcessor::lexerOneChar(input, bind(CharsJudgment::isPunctuation, _1));
+}
+
 int	CharsProcessor::lexerString(char*& input)
 {
 	int count(0);
 	if (lexerChars(input, '\"')){
+		++count;
 		count += lexerChars(input,  bind(CharsJudgment::notDQM, _1));
 		if (!lexerChars(input, '\"')){
 			input = input - count;
 			count = 0;
-		};
+		}else{
+			++count;
+		}
 	}
 	return count;
 }
@@ -87,12 +106,14 @@ int	CharsProcessor::lexerComment(char*& input)
 {
 	int count(0);
 	if (lexerChars(input, '/')){
-		count++;
+		++count;
 		count += lexerChars(input,  bind(CharsJudgment::notEndComment, _1));
 		if (!lexerChars(input, '/')){
 			input = input - count;
 			count = 0;
-		};
+		}else{
+			++count;
+		}
 	}
 	return count;
 }

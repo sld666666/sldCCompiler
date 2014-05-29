@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE (isNumber)
 BOOST_AUTO_TEST_CASE (lexerComment)
 {
 	char* input = "/*1234*/";
-	BOOST_CHECK(CharsProcessor::lexerComment(input));
+	BOOST_CHECK(CharsProcessor::lexerComment(input) == 8);
 
 }
 

@@ -11,6 +11,7 @@ public:
 	~CharsProcessor(void);
 
 	static int	lexerChars(char*& input, LexFp lexFp);
+	static int	lexerOneChar(char*& input, LexFp lexFp);
 	static bool lexerChars(char*& input, char comparedCh);
 	static int	removeSpace(char*& input);
 	static int	lexerKeyWordOrVar(char*& input);
@@ -19,6 +20,7 @@ public:
 	static int	lexerReal(char*& input);
 	static int	lexerDelimiter(char*& input);
 	static int	lexerComment(char*& input);
+	static int	lexerIdentifier(char*& input);
 
 	static bool	isNumber(const char* input);
 };

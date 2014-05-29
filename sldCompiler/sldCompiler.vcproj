@@ -321,6 +321,18 @@
 				>
 			</File>
 			<File
+				RelativePath="..\core\OsDefinition.h"
+				>
+			</File>
+			<File
+				RelativePath="..\core\OutputDebug.h"
+				>
+			</File>
+			<File
+				RelativePath="..\core\StringConvertor.h"
+				>
+			</File>
+			<File
 				RelativePath="..\core\StringUtils.cpp"
 				>
 			</File>
