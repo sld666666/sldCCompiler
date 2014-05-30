@@ -341,6 +341,42 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="arithmetic"
+			>
+			<File
+				RelativePath="..\arithmetic\ArithmeticLexer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\ArithmeticLexer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\ArithmeticProcess.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\ArithmeticProcess.h"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\AtomJudgment.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\AtomJudgment.h"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\AtriCharsProcessor.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\arithmetic\AtriCharsProcessor.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>

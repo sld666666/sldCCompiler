@@ -4,6 +4,7 @@
 
 typedef function<int(char)> LexFp;
 
+
 class CharsProcessor
 {
 public:
